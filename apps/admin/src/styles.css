@@ -1,8 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('node_modules/flexi-toast/src/flexi-toast.css');
+
 :root {
     --primary-color: #4361ee;
 
-    --bg-color: #f8f9fa;
+    --bg-color: #ffffff;
     --card-bg: #ffffff;
     --text-color: #4a5568;
     --text-muted: #6c757d;
