@@ -6,7 +6,6 @@ import { RouterLink } from '@angular/router';
 import { FlexiToastService } from 'flexi-toast';
 
 export interface ProductModel{
-  id:string
   name:string
   imageUrl:string
   price:number
@@ -16,7 +15,6 @@ export interface ProductModel{
 }
 
 export const initialProduct:ProductModel={
-id:"",
 name:"",
 imageUrl:"",
 price:0,

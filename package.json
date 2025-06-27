@@ -13,7 +13,10 @@
     "@angular/router": "~20.0.0",
     "flexi-grid": "^20.0.0",
     "flexi-toast": "^20.0.2",
+    "i": "^0.3.7",
+    "json-server": "^1.0.0-beta.3",
     "ngx-mask": "^19.0.7",
+    "npm": "^11.4.2",
     "rxjs": "~7.8.0"
   },
   "devDependencies": {

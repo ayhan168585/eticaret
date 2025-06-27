@@ -1,4 +1,5 @@
 import { Route } from '@angular/router';
+import { routes } from './pages/products/routes';
 
 export const appRoutes: Route[] = [
     {
@@ -14,17 +15,16 @@ export const appRoutes: Route[] = [
                 loadComponent:()=>import("./pages/home/home")
             },
             {
-                path:"products",
-                loadComponent:()=>import("./pages/products/products")
+                path:'products',
+                loadChildren:()=>import('./pages/products/routes')
             },
             {
-                path:"products/create",
-                loadComponent:()=>import("./pages/products/create/create")
+                path:"categories",
+                loadChildren:()=>import("./pages/categories/routes")
             },
-             {
-                path:"products/edit/:id",
-                loadComponent:()=>import("./pages/products/create/create")
-            }
+            
+            
         ]
     }
 ];
+

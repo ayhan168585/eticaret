@@ -1,40 +1,37 @@
-import { Location } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { ChangeDetectionStrategy, Component, computed, inject, linkedSignal, resource, signal, ViewEncapsulation } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import Blank from 'apps/admin/src/components/blank';
 import { FlexiToastService } from 'flexi-toast';
-import { NgxMaskDirective } from 'ngx-mask';
 import { lastValueFrom } from 'rxjs';
-import { initialProduct, ProductModel } from '../products';
+import { CategoryModel, InitialCategory } from '../categories';
 
 @Component({
-  imports: [Blank,FormsModule,NgxMaskDirective],
+  imports: [Blank,FormsModule],
   templateUrl: './create.html',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export default class ProductCreate {
+export default class CreateCategory {
 
-  readonly result=resource({
+   readonly result=resource({
     params:()=>this.id(),
     loader:async ()=>{
-      var res=await lastValueFrom(this.#http.get<ProductModel>(`http://localhost:3000/products/${this.id()}`))
+      var res=await lastValueFrom(this.#http.get<CategoryModel>(`http://localhost:3000/categories/${this.id()}`))
       return res
     }
 
   })
 
-  readonly data=linkedSignal(()=>this.result.value() ?? initialProduct)
-  readonly btnName=computed(()=>this.id() ? "Güncelle" : "Kaydet")
-  readonly cardTitle=computed(()=>this.id() ? "Ürün Güncelle" : "Ürün Ekle")
+  readonly data=linkedSignal(()=>this.result.value() ?? InitialCategory)
   readonly id=signal<string | undefined>(undefined)
   readonly #http=inject(HttpClient)
   readonly #router=inject(Router)
   readonly #toast=inject(FlexiToastService)
   readonly #activate=inject(ActivatedRoute)
-  //readonly #location=inject(Location)
+  readonly cardTitle=computed(()=>this.id() ? 'Kategori Güncelle' : 'Kategori Ekle' )
+  readonly btnName=computed(()=>this.id() ? 'Güncelle' : 'Kaydet')
 
   constructor(){
     this.#activate.params.subscribe(res=>{
@@ -45,24 +42,23 @@ export default class ProductCreate {
       }
     })
   }
-save(form:NgForm){
+  save(form:NgForm){
 if(!form.valid) return
 
 if(!this.id()){
 
-  this.#http.post("http://localhost:3000/products",this.data()).subscribe()
+  this.#http.post("http://localhost:3000/categories",this.data()).subscribe()
   
-  this.#router.navigateByUrl("/products")
+  this.#router.navigateByUrl("/categories")
   //this.#location.back() //gelmeden önceki sayfaya döner
-  this.#toast.showToast("Ürün Ekleme","Ürün Eklendi","success")
+  this.#toast.showToast("Kategori Ekleme","Kategori Eklendi","success")
 }else{
-  this.#http.put(`http://localhost:3000/products/${this.id()}`,this.data()).subscribe()
-  this.#router.navigateByUrl("/products")
+  this.#http.put(`http://localhost:3000/categories/${this.id()}`,this.data()).subscribe()
+  this.#router.navigateByUrl("/categories")
   //this.#location.back() //gelmeden önceki sayfaya döner
-  this.#toast.showToast("Ürün Güncelleme","Ürün Güncellendi","info")
+  this.#toast.showToast("Kategori Güncelleme","Kategori Güncellendi","info")
 }
 
 }
-
 
 }
