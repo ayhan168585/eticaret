@@ -1,0 +1,72 @@
+<app-blank
+  pageTitle="Kullanıcılar"
+  [breadcrumbs]="[{title:'Kullanıcılar',url:'/users',icon:'group'}]"
+/>
+
+<flexi-grid
+  [data]="data()"
+  [loading]="loading()"
+  language="tr"
+  [showCaption]="true"
+  captionTitle="Kullanıcı Listesi"
+  [showExportExcelBtn]="true"
+  exportExcelFileName="Kullanıcılar"
+  (onRefresh)="result.reload()"
+  fontSize="18px"
+>
+  <ng-template flexiGridCaptionCommandTemplate>
+    <flexi-button
+      routerLink="/users/create"
+      btnColor="primary"
+      btnIcon="add"
+      title="Kullanıcı Ekle"
+      flexiTooltip="bottom"
+    />
+  </ng-template>
+  <flexi-grid-column field="firstName" title="Adı" />
+  <flexi-grid-column field="lastName" title="Soyadı" />
+  <flexi-grid-column field="fullName" title="Adı Soyadı" />
+  <flexi-grid-column field="userName" title="Kullanıcı Adı" />
+  <flexi-grid-column field="email" title="Email Adresi" />
+  <flexi-grid-column
+    field="isAdmin"
+    title="Admin Mi"
+    textAlign="center"
+    filterType="boolean"
+    [booleanData]="['Admin','Admin Değil']"
+  >
+    <ng-template flexiGridCellTemplate let-item>
+      <div class="d-flex justify-content-center">
+        <div class="form-check form-switch">
+          <input
+          disabled
+            type="checkbox"
+            role="switch"
+            [id]="item.id"
+            [checked]="item.isAdmin"
+            class="form-check-input"
+            [name]="item.id"
+          />
+        </div>
+      </div>
+    </ng-template>
+  </flexi-grid-column>
+  <ng-template flexiGridColumnCommandTemplate let-item>
+    <flexi-button
+      btnColor="info"
+      btnIcon="edit"
+      title="Güncelle"
+      flexiTooltip="bottom"
+      btnSize="small"
+      [routerLink]="['/','users','edit',item.id]"
+    />
+    <flexi-button
+      btnColor="danger"
+      btnIcon="delete"
+      title="Sil"
+      flexiTooltip="bottom"
+      btnSize="small"
+      (click)="delete(item.id)"
+    />
+  </ng-template>
+</flexi-grid>

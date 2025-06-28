@@ -1,0 +1,93 @@
+<app-blank
+  pageTitle="Kullanıcı Ekle"
+  [breadcrumbs]="[
+    {title:'Kullanıcılar',icon:'group',url:'/users'},
+    {title:'Ekle',icon:'add',url:'/users/create'}
+    ]"
+/>
+
+<div class="row">
+  <div class="col-md-4 col-12">
+    <div class="card">
+      <div class="card-header">
+        <h4>{{cardTitle()}}</h4>
+      </div>
+      <div class="card-body">
+        <form #form="ngForm" autocomplete="off" (ngSubmit)="save(form)">
+                        
+            <div class="form-group d-flex justify-content-between">
+
+                <label>Admin Mi</label>
+                <div class="form-check form-switch">
+               <input
+               [(ngModel)]="data().isAdmin"
+                 type="checkbox"
+                 role="switch"
+                 [id]="data().isAdmin"
+                 class="form-check-input"
+                 name="isAdmin"
+               />
+             </div>
+            </div>
+
+          <div class="form-group">
+            <label>Adı</label>
+            <input
+              class="form-control"
+              type="text"
+              [(ngModel)]="data().firstName"
+              name="firstName"
+            />
+          </div>
+          <div class="form-group">
+            <label>Soyadı</label>
+            <input
+              class="form-control"
+              type="text"
+              [(ngModel)]="data().lastName"
+              name="lasttName"
+            />
+          </div>
+          <!-- <div class="form-group">
+                            <label>Adı Soyadı</label>
+                            <input class="form-control" type="text" [(ngModel)]="data().fullName" name="fullName" >
+                        </div> -->
+          <div class="form-group">
+            <label>Kullanıcı Adı</label>
+            <input
+              class="form-control"
+              type="text"
+              [(ngModel)]="data().userName"
+              name="userName"
+            />
+          </div>
+          <div class="form-group">
+            <label>Email Adresi</label>
+            <input
+              class="form-control"
+              type="email"
+              [(ngModel)]="data().email"
+              name="email"
+            />
+          </div>
+          <div class="form-group">
+            <label>Şifre</label>
+            <input
+              class="form-control"
+              type="password"
+              [(ngModel)]="data().password"
+              name="password"
+            />
+          </div>
+         
+         
+           
+
+          <div class="form-group mt-2 d-flex justify-content-end">
+            <button type="submit" class="btn btn-primary">{{btnName()}}</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

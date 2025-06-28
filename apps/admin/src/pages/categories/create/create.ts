@@ -6,6 +6,7 @@ import Blank from 'apps/admin/src/components/blank';
 import { FlexiToastService } from 'flexi-toast';
 import { lastValueFrom } from 'rxjs';
 import { CategoryModel, InitialCategory } from '../categories';
+import { api } from 'apps/admin/src/constants';
 
 @Component({
   imports: [Blank,FormsModule],
@@ -18,13 +19,13 @@ export default class CreateCategory {
    readonly result=resource({
     params:()=>this.id(),
     loader:async ()=>{
-      var res=await lastValueFrom(this.#http.get<CategoryModel>(`http://localhost:3000/categories/${this.id()}`))
+      var res=await lastValueFrom(this.#http.get<CategoryModel>(`api/categories/${this.id()}`))
       return res
     }
 
   })
 
-  readonly data=linkedSignal(()=>this.result.value() ?? InitialCategory)
+  readonly data=computed(()=>this.result.value() ?? {...InitialCategory})
   readonly id=signal<string | undefined>(undefined)
   readonly #http=inject(HttpClient)
   readonly #router=inject(Router)
@@ -47,13 +48,14 @@ if(!form.valid) return
 
 if(!this.id()){
 
-  this.#http.post("http://localhost:3000/categories",this.data()).subscribe()
+  this.#http.post(`api/categories`,this.data()).subscribe()
   
   this.#router.navigateByUrl("/categories")
   //this.#location.back() //gelmeden önceki sayfaya döner
   this.#toast.showToast("Kategori Ekleme","Kategori Eklendi","success")
+  
 }else{
-  this.#http.put(`http://localhost:3000/categories/${this.id()}`,this.data()).subscribe()
+  this.#http.put(`api/categories/${this.id()}`,this.data()).subscribe()
   this.#router.navigateByUrl("/categories")
   //this.#location.back() //gelmeden önceki sayfaya döner
   this.#toast.showToast("Kategori Güncelleme","Kategori Güncellendi","info")
