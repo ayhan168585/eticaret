@@ -5,8 +5,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import Blank from 'apps/admin/src/components/blank';
 import { FlexiToastService } from 'flexi-toast';
 import { lastValueFrom } from 'rxjs';
-import { CategoryModel, InitialCategory } from '../categories';
+import { CategoryModel, InitialCategory } from '@shared/models/category.model';
 import { api } from 'apps/admin/src/constants';
+import { BreadcrumbModel } from '../../layouts/breadcrumb';
 
 @Component({
   imports: [Blank,FormsModule],
@@ -20,6 +21,7 @@ export default class CreateCategory {
     params:()=>this.id(),
     loader:async ()=>{
       var res=await lastValueFrom(this.#http.get<CategoryModel>(`api/categories/${this.id()}`))
+       this.breadcrumbs.update(prev=>[...prev, {title:res.name,icon:'edit',url:`/categories/edit/${this.id}`}])
       return res
     }
 
@@ -33,6 +35,10 @@ export default class CreateCategory {
   readonly #activate=inject(ActivatedRoute)
   readonly cardTitle=computed(()=>this.id() ? 'Kategori Güncelle' : 'Kategori Ekle' )
   readonly btnName=computed(()=>this.id() ? 'Güncelle' : 'Kaydet')
+   readonly breadcrumbs=signal<BreadcrumbModel[]>([
+      {title:'Kategoriler',icon:'category',url:'/categories'},
+     
+     ])
 
   constructor(){
     this.#activate.params.subscribe(res=>{
@@ -40,6 +46,8 @@ export default class CreateCategory {
 
         this.id.set(res["id"])
         console.log(res["id"])
+      }else{
+         this.breadcrumbs.update(prev=>[...prev, {title:'Ekle',icon:'add',url:'/categories/create'}])
       }
     })
   }

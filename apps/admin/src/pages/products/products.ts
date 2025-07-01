@@ -4,27 +4,11 @@ import { FlexiGridFilterDataModel, FlexiGridModule } from 'flexi-grid';
 import { HttpClient, httpResource } from '@angular/common/http';
 import { RouterLink } from '@angular/router';
 import { FlexiToastService } from 'flexi-toast';
-import { CategoryModel } from '../categories/categories';
+import { CategoryModel } from '@shared/models/category.model';
+import { ProductModel } from '@shared/models/product.model'
 import { FlexiSelectModule } from 'flexi-select';
 
-export interface ProductModel{
-  id?:string
-  name:string
-  imageUrl:string
-  price:number
-  stock:number
-  categoryId:string
-  categoryName:string
-}
 
-export const initialProduct:ProductModel={
-name:"",
-imageUrl:"",
-price:0,
-stock:0,
-categoryId:"123",
-categoryName:"Telefon"
-}
 
 
 @Component({

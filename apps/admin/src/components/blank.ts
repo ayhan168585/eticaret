@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, inject, input, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, inject, input, OnChanges, SimpleChanges, ViewEncapsulation } from '@angular/core';
 import { BreadcrumbModel } from '../pages/layouts/breadcrumb';
 import { Common } from '../services/common';
 
@@ -11,10 +11,11 @@ import { Common } from '../services/common';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export default class Blank implements AfterViewInit{
-ngAfterViewInit(): void {
-  this.#common.set(this.breadcrumbs())
+export default class Blank implements OnChanges{
+ngOnChanges(changes: SimpleChanges): void {
+   this.#common.set(this.breadcrumbs())
 }
+
 
 readonly pageTitle=input.required<string>()
 readonly breadcrumbs=input.required<BreadcrumbModel[]>()

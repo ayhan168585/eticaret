@@ -1,6 +1,115 @@
 {
   "products": [
+   
+     {
+      "id": "123",
+      "imageUrl": "https://m.media-amazon.com/images/I/81-hBEU+ZdL._AC_SX679_.jpg",
+      "name": "IPhone 15 Pro",
+      "price": 75000,
+      "stock": 50,
+      "categoryId": "233",
+      "categoryName": "Telefon"
+    },
     {
+      "id": "a9d3",
+      "name": "Bilgisayar",
+      "imageUrl": "https://m.media-amazon.com/images/I/817xnvwK0PL._AC_SL1500_.jpg",
+      "price": 45000,
+      "stock": "25",
+      "categoryId": "3941",
+      "categoryName": "Bilgisayar"
+    },
+    {
+      "id": "f3e7",
+      "name": "Televizyon",
+      "imageUrl": "https://m.media-amazon.com/images/I/81qpdeKzdmS._AC_SL1500_.jpg",
+      "price": 25000,
+      "stock": "10",
+      "categoryId": "cf05",
+      "categoryName": "Televizyon"
+    },
+    {
+      "id": "ce77",
+      "name": "Buzdolabı",
+      "imageUrl": "https://www.bekoonline.net/idea/dp/70/myassets/products/009/beko-978556-eb-no-frost-buzdolabi-8.jpg?revision=1738664887",
+      "price": 30000,
+      "stock": "10",
+      "categoryId": "f9b0",
+      "categoryName": "Mutfak Eşyası"
+    },
+     {
+      "id": "123",
+      "imageUrl": "https://m.media-amazon.com/images/I/81-hBEU+ZdL._AC_SX679_.jpg",
+      "name": "IPhone 15 Pro",
+      "price": 75000,
+      "stock": 50,
+      "categoryId": "233",
+      "categoryName": "Telefon"
+    },
+    {
+      "id": "a9d3",
+      "name": "Bilgisayar",
+      "imageUrl": "https://m.media-amazon.com/images/I/817xnvwK0PL._AC_SL1500_.jpg",
+      "price": 45000,
+      "stock": "25",
+      "categoryId": "3941",
+      "categoryName": "Bilgisayar"
+    },
+    {
+      "id": "f3e7",
+      "name": "Televizyon",
+      "imageUrl": "https://m.media-amazon.com/images/I/81qpdeKzdmS._AC_SL1500_.jpg",
+      "price": 25000,
+      "stock": "10",
+      "categoryId": "cf05",
+      "categoryName": "Televizyon"
+    },
+    {
+      "id": "ce77",
+      "name": "Buzdolabı",
+      "imageUrl": "https://www.bekoonline.net/idea/dp/70/myassets/products/009/beko-978556-eb-no-frost-buzdolabi-8.jpg?revision=1738664887",
+      "price": 30000,
+      "stock": "10",
+      "categoryId": "f9b0",
+      "categoryName": "Mutfak Eşyası"
+    },
+     {
+      "id": "123",
+      "imageUrl": "https://m.media-amazon.com/images/I/81-hBEU+ZdL._AC_SX679_.jpg",
+      "name": "IPhone 15 Pro",
+      "price": 75000,
+      "stock": 50,
+      "categoryId": "233",
+      "categoryName": "Telefon"
+    },
+    {
+      "id": "a9d3",
+      "name": "Bilgisayar",
+      "imageUrl": "https://m.media-amazon.com/images/I/817xnvwK0PL._AC_SL1500_.jpg",
+      "price": 45000,
+      "stock": "25",
+      "categoryId": "3941",
+      "categoryName": "Bilgisayar"
+    },
+    {
+      "id": "f3e7",
+      "name": "Televizyon",
+      "imageUrl": "https://m.media-amazon.com/images/I/81qpdeKzdmS._AC_SL1500_.jpg",
+      "price": 25000,
+      "stock": "10",
+      "categoryId": "cf05",
+      "categoryName": "Televizyon"
+    },
+    {
+      "id": "ce77",
+      "name": "Buzdolabı",
+      "imageUrl": "https://www.bekoonline.net/idea/dp/70/myassets/products/009/beko-978556-eb-no-frost-buzdolabi-8.jpg?revision=1738664887",
+      "price": 30000,
+      "stock": "10",
+      "categoryId": "f9b0",
+      "categoryName": "Mutfak Eşyası"
+    },
+     {
       "id": "123",
       "imageUrl": "https://m.media-amazon.com/images/I/81-hBEU+ZdL._AC_SX679_.jpg",
       "name": "IPhone 15 Pro",

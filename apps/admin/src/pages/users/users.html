@@ -39,11 +39,11 @@
       <div class="d-flex justify-content-center">
         <div class="form-check form-switch">
           <input
-          disabled
+            (change)="changeIsAdmin(item)"
             type="checkbox"
             role="switch"
             [id]="item.id"
-            [checked]="item.isAdmin"
+            [(ngModel)]="item.isAdmin"
             class="form-check-input"
             [name]="item.id"
           />

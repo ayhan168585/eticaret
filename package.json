@@ -16,9 +16,11 @@
     "flexi-toast": "^20.0.2",
     "i": "^0.3.7",
     "json-server": "^1.0.0-beta.3",
+    "ngx-infinite-scroll": "^20.0.0",
     "ngx-mask": "^19.0.7",
     "npm": "^11.4.2",
-    "rxjs": "~7.8.0"
+    "rxjs": "~7.8.0",
+    "tr-currency": "^20.0.0"
   },
   "devDependencies": {
     "@angular-devkit/core": "~20.0.0",

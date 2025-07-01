@@ -1,11 +1,12 @@
 import { ChangeDetectionStrategy, Component, computed, inject, linkedSignal, resource, signal, ViewEncapsulation } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
-import { InitialUser, UserModel } from '../users';
+import { UserModel,InitialUser } from '@shared/models/user.model';
 import { HttpClient } from '@angular/common/http';
 import Blank from 'apps/admin/src/components/blank';
 import { FormsModule, NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FlexiToastService } from 'flexi-toast';
+import Breadcrumb, { BreadcrumbModel } from '../../layouts/breadcrumb';
 
 @Component({
   imports: [Blank,FormsModule],
@@ -19,6 +20,8 @@ export default class CreateUser {
     params:()=>this.id(),
     loader:async ()=>{
       var res=await lastValueFrom(this.#http.get<UserModel>(`api/users/${this.id()}`))
+              this.breadcrumbs.update(prev=>[...prev, {title:res.fullName,icon:'edit',url:`/users/edit/${this.id}`}])
+
       return res
     }
 
@@ -33,12 +36,18 @@ export default class CreateUser {
     readonly #activate=inject(ActivatedRoute)
    readonly cardTitle=computed(()=>this.id() ? 'Kullanıcı Güncelle' : 'Kullanıcı Ekle')
    readonly btnName=computed(()=>this.id() ? 'Güncelle' : 'Kaydet')
+   readonly breadcrumbs=signal<BreadcrumbModel[]>([
+    {title:'Kullanıcılar',icon:'group',url:'/users'},
+   
+   ])
 constructor(){
     this.#activate.params.subscribe(res=>{
       if(res["id"]){
 
         this.id.set(res["id"])
-        console.log(res["id"])
+      }else
+      {
+        this.breadcrumbs.update(prev=>[...prev, {title:'Ekle',icon:'add',url:'/users/create'}])
       }
     })
   }

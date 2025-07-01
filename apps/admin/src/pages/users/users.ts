@@ -4,30 +4,13 @@ import { HttpClient, httpResource } from '@angular/common/http';
 import { FlexiGridModule } from 'flexi-grid';
 import { RouterLink } from '@angular/router';
 import { FlexiToastService } from 'flexi-toast';
+import { FormsModule } from '@angular/forms';
+import { UserModel } from '@shared/models/user.model'
 
-export interface UserModel{
-  id?:string
-  firstName:string
-  lastName:string
-  fullName:string
-  userName:string
-  email:string
-  password:string
-  isAdmin:boolean
-}
 
-export const InitialUser:UserModel={
-  firstName:"",
-  lastName:"",
- fullName:"",
-  userName:"",
-  email:"",
-  password:"",
-  isAdmin:false
-}
 
 @Component({
-  imports: [Blank,FlexiGridModule,RouterLink],
+  imports: [Blank,FlexiGridModule,RouterLink,FormsModule],
   templateUrl: './users.html',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -46,5 +29,20 @@ this.#http.delete(`api/users/${id}`).subscribe(()=>{
   this.result.reload()
 })
 },"Vazgeç")
+  }
+
+  changeIsAdmin(data:UserModel){
+    const yetki=computed(()=>data.isAdmin==true ? 'Admin' : 'Normal Kullanıcı')
+      this.#toast.showSwal("Yetki Değişikliği",`${data.fullName}'in yetkisini değiştirmek istiyormusunuz`,"Değiştir",()=>{
+         this.#http.put(`api/users/${data.id}`,data).subscribe(()=>{
+      
+           this.#toast.showToast("Yetki Değişikliği",`${data.fullName} ${yetki()} yetkisine değiştirildi.`,"info")
+            this.result.reload()
+               })
+    
+     
+    },"Vazgeç")
+     this.result.reload()
+   
   }
 }

@@ -10,15 +10,9 @@ import Blank from '../../components/blank';
 import { HttpClient, httpResource } from '@angular/common/http';
 import { RouterLink } from '@angular/router';
 import { FlexiToastService } from 'flexi-toast';
+import { CategoryModel } from '@shared/models/category.model'
 
-export interface CategoryModel {
-  id?:string
-  name: string;
-}
 
-export const InitialCategory: CategoryModel = {
-  name:"",
-};
 @Component({
   imports: [FlexiGridModule, Blank,RouterLink],
   templateUrl: './categories.html',

@@ -1,9 +1,6 @@
 <app-blank
-  pageTitle="Kullanıcı Ekle"
-  [breadcrumbs]="[
-    {title:'Kullanıcılar',icon:'group',url:'/users'},
-    {title:'Ekle',icon:'add',url:'/users/create'}
-    ]"
+  [pageTitle]="cardTitle()"
+  [breadcrumbs]="breadcrumbs()"
 />
 
 <div class="row">

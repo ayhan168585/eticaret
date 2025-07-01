@@ -7,10 +7,11 @@ import Blank from 'apps/admin/src/components/blank';
 import { FlexiToastService } from 'flexi-toast';
 import { NgxMaskDirective } from 'ngx-mask';
 import { lastValueFrom } from 'rxjs';
-import { initialProduct, ProductModel } from '../products';
+import { initialProduct, ProductModel } from '@shared/models/product.model';
 import { api } from 'apps/admin/src/constants';
-import { CategoryModel } from '../../categories/categories';
+import { CategoryModel } from '@shared/models/category.model';
 import { FlexiSelectModule } from 'flexi-select';
+import { BreadcrumbModel } from '../../layouts/breadcrumb';
 
 @Component({
   imports: [Blank,FormsModule,NgxMaskDirective,FlexiSelectModule],
@@ -24,6 +25,7 @@ export default class ProductCreate {
     params:()=>this.id(),
     loader:async ()=>{
       var res=await lastValueFrom(this.#http.get<ProductModel>(`api/products/${this.id()}`))
+      this.breadcrumbs.update(prev=>[...prev, {title:res.name,icon:'edit',url:`/products/edit/${this.id}`}])
       return res
     }
 
@@ -40,6 +42,10 @@ export default class ProductCreate {
   readonly #router=inject(Router)
   readonly #toast=inject(FlexiToastService)
   readonly #activate=inject(ActivatedRoute)
+   readonly breadcrumbs=signal<BreadcrumbModel[]>([
+      {title:'Ürünler',icon:'deployed_code',url:'/products'},
+     
+     ])
   //readonly #location=inject(Location)
 
   constructor(){
@@ -48,6 +54,9 @@ export default class ProductCreate {
 
         this.id.set(res["id"])
         console.log(res["id"])
+      }else{
+        this.breadcrumbs.update(prev=>[...prev, {title:'Ekle',icon:'add',url:'/products/create'}])
+
       }
     })
   }
