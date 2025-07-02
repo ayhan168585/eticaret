@@ -7,7 +7,7 @@
             <ul class="nav-menu">
                 @for (val of data(); track val.id) {
                   
-                    <li><a [routerLink]="['/',val.url]" class="nav-link">{{val.name}}</a></li>
+                    <li><a [routerLink]="['/','products',val.url]" class="nav-link">{{val.name}}</a></li>
                 }
               
             </ul>
@@ -33,7 +33,7 @@
                     <ul>
                         @for (val of data(); track val.id) {
                           
-                            <li><a [routerLink]="['/',val.id]">{{val.name}}</a></li>
+                            <li><a [routerLink]="['/','products',val.url]">{{val.name}}</a></li>
                         }
                        
                     </ul>

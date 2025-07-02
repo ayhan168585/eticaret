@@ -35,9 +35,11 @@ export default class Home {
     return endpoint;
   });
  
+  readonly placeHolderCount=signal<number[]>([1,2,3])
   readonly categoryUrl = signal<string | undefined>(undefined);
   readonly categoryUrlPrev = this.computedPrevious(this.categoryUrl);
   readonly data = computed(() => this.result.value() ?? []);
+  readonly loading=computed(()=>this.result.isLoading())
   readonly dataSignal = signal<ProductModel[]>([]);
   readonly #activated = inject(ActivatedRoute);
 

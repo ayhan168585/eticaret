@@ -1,3 +1,4 @@
+<title>TechStore | Ana Sayfa</title>
 <section class="hero">
   <div class="hero-content">
     <h1>En Yeni Teknoloji Ürünleri</h1>
@@ -11,8 +12,22 @@
     <h2 class="section-title">Ürünler</h2>
     <div class="products-grid">
       <!-- Product 1 -->
-      @for (val of dataSignal(); track val.id) {
+       @if (loading()) {
+        @for (val of placeHolderCount() ; track val) {
+          
+          <div class="product-card placeholder-glow">
+                         <div class="placeholder" class="placeholder"style="width: 100%;height:200px"></div>
+                         <h3 class="placeholder">iPhone 15 Pro</h3>
+                         <p class="price placeholder">45.999 ₺</p>
+                         <button class="add-to-cart placeholder">Sepete Ekle</button>
+                     </div>
+        }
 
+               
+       } @else {
+           @for (val of dataSignal(); track val.id) {
+
+        
       <div class="product-card">
         <img [src]="val.imageUrl" [alt]="val.name" />
         <h3>{{val.name}}</h3>
@@ -20,6 +35,8 @@
         <button class="add-to-cart">Sepete Ekle</button>
       </div>
       }
+       }
+    
       <div
         class="search-results"
         infiniteScroll
