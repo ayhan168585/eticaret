@@ -14,7 +14,14 @@
             <div class="nav-icons">
                 <i class="fas fa-search"></i>
                 <i class="fas fa-shopping-cart"></i>
-                <i routerLink="/login"  class="fas fa-user"></i>
+                @if (this.user()) {
+                  
+                    <i (click)="logout()" class="fas fa-power-off"></i>
+                } @else {
+                  
+                    <i routerLink="/auth/login"  class="fas fa-user"></i>
+                }
+
             </div>
         </div>
     </nav>

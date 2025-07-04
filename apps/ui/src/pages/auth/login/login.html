@@ -1,0 +1,67 @@
+<div class="login-header">
+  <div class="login-icon">
+    <i class="fas fa-user-circle"></i>
+  </div>
+  <h1>Hoş Geldiniz</h1>
+  <p>Hesabınızla giriş yaparak alışverişe devam edin</p>
+</div>
+
+<div class="login-tabs">
+  <button routerLink="/auth/login" class="tab-btn" data-tab="login">
+    <i class="fas fa-sign-in-alt"></i>
+    Giriş Yap
+  </button>
+  <button
+    routerLink="/auth/register"
+    class="tab-btn active"
+    data-tab="register"
+  >
+    <i class="fas fa-user-plus"></i>
+    Kayıt Ol
+  </button>
+</div>
+
+<!-- Register Form -->
+<div class="tab-content active" id="register">
+  <form #form="ngForm" class="auth-form" (ngSubmit)="signIn(form)">
+    <div class="form-row">
+     
+    </div>
+
+    <div class="form-group">
+      <label for="userName">Kullanıcı Adı</label>
+      <div class="input-group">
+        <i class="fas fa-person"></i>
+        <input
+          type="text"
+          required
+           ngModel
+          name="userName"
+          placeholder="Kullanıcı adı..."
+        />
+      </div>
+    </div>
+  
+
+    <div class="form-group">
+      <label for="registerPassword">Şifre</label>
+      <div class="input-group">
+        <i class="fas fa-lock"></i>
+        <input
+          type="password"
+          required
+           ngModel
+          name="password"
+          placeholder="******"
+        />
+      </div>
+    </div>
+
+  
+
+    <button type="submit" class="auth-btn">
+      <i class="fas fa-sign-in-alt"></i>
+      Giriş Yap
+    </button>
+  </form>
+</div>

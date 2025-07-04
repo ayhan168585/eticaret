@@ -203,6 +203,16 @@
       "email": "har@har",
       "password": "12",
       "isAdmin": false
+    },
+    {
+      "id": "4732",
+      "firstName": "Rahime",
+      "lastName": "Er",
+      "fullName": "Rahime Er ",
+      "userName": "rahime",
+      "email": "rahime@gmail.com",
+      "password": "1",
+      "isAdmin": false
     }
   ]
 }

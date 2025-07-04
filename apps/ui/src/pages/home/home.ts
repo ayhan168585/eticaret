@@ -13,16 +13,19 @@ import {
 import { ProductModel } from '@shared/models/product.model';
 import { TrCurrencyPipe } from 'tr-currency';
 import { InfiniteScrollDirective } from 'ngx-infinite-scroll';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
+import { Common } from '../../services/common';
 
 @Component({
   selector: 'app-home',
-  imports: [TrCurrencyPipe, InfiniteScrollDirective],
+  imports: [TrCurrencyPipe, InfiniteScrollDirective,RouterLink],
   templateUrl: './home.html',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class Home {
+  readonly user=computed(()=>this.#common.user())
+  readonly #common=inject(Common)
   readonly limit = signal<number>(6);
   readonly start = signal<number>(0);
   readonly result = httpResource<ProductModel[]>(() => {
@@ -63,6 +66,7 @@ export default class Home {
   }
 
   onScroll() {
+    if(this.start()>=0) return //Gelen ürün sayısının alınıp burada verilmesi gerekiyor ama json-server da böyle bir özellik olmadığından titremeyi engellemek için scrrool özelliğini kapatan 0 değerini veriyoruz.
     this.limit.update((prev) => prev + 6);
     this.start.update((prev) => prev + 6);
   }
