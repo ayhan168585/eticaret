@@ -8,11 +8,11 @@ import {initialOrder, OrderModel} from '@shared/models/order.model'
 import { FormsModule, NgForm } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { NgxMaskDirective } from 'ngx-mask';
-import { lastValueFrom } from 'rxjs';
 import { FlexiToastService } from 'flexi-toast';
+import { FlexiSelectModule } from 'flexi-select';
 
 @Component({
-  imports: [RouterLink,TrCurrencyPipe,FormsModule,DatePipe,NgxMaskDirective],
+  imports: [RouterLink,TrCurrencyPipe,FormsModule,DatePipe,NgxMaskDirective,FlexiSelectModule],
   templateUrl: './payment.html',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -30,6 +30,9 @@ export default class Payment {
   readonly showSuccessPart=signal<boolean>(false)
   readonly term=signal<boolean>(false)
   readonly #toast=inject(FlexiToastService)
+  readonly cityResult=httpResource<any[]>(()=>'/il-ilce.json')
+  readonly cities=computed(()=>this.cityResult.value()?? [])
+  readonly districts=signal<any[]>([])
 
 
    readonly total = computed(() => {
@@ -60,6 +63,11 @@ export default class Payment {
       this.#common.basketCount.set(0)
       
     })
+  }
+
+  setDistricts(){
+    const city=this.cities().find(p=>p.il_adi===this.data().city)
+    this.districts.set(city.ilceler)
   }
 
 }

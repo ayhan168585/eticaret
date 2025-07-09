@@ -3114,3 +3114,11 @@ hr {
   font-size: 10px;
   padding: 0.5px;
 }
+
+.city-select.flexi-select-search-input, .flexi-select-div{
+    height: 47px !important;
+    font-size: 15px !important;
+}
+.city-select.flexi-select-ul{
+  font-size: 20px !important;
+}
