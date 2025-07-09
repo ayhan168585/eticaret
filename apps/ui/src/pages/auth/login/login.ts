@@ -14,6 +14,10 @@ import { FlexiToastService } from 'flexi-toast';
 })
 export default class Login {
 
+  constructor(){
+    
+  }
+
   readonly #http=inject(HttpClient)
   readonly #toast=inject(FlexiToastService)
   readonly #router=inject(Router)
@@ -30,9 +34,11 @@ export default class Login {
         }else{
           const user=res[0]
           localStorage.setItem("response",JSON.stringify(user))
-          this.#common.user.set(user)
+          this.#common.user.set(user)  
+          this.#common.getBasketCount()       
           this.#toast.showToast("Giriş Başarılı","Başarılı şekilde giriş yaptınız","success")
           this.#router.navigateByUrl("/")
+         
         }
       })
   }

@@ -12,9 +12,17 @@
               
             </ul>
             <div class="nav-icons">
-                <i class="fas fa-search"></i>
-                <i class="fas fa-shopping-cart"></i>
                 @if (this.user()) {
+                    <div routerLink="/baskets" style="position:relative">
+    
+                        <i class="fas fa-shopping-cart"></i>
+                        @if (basketCount()>0) {
+                          
+                            <div class="basket-count">{{basketCount()}}</div>
+                        } @else {
+                          
+                        }
+                    </div>
                   
                     <i (click)="logout()" class="fas fa-power-off"></i>
                 } @else {

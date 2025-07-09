@@ -214,5 +214,98 @@
       "password": "1",
       "isAdmin": false
     }
+  ],
+  "baskets": [
+    {
+      "id": "2509",
+      "userId": "12",
+      "productId": "f3e7",
+      "productName": "Televizyon",
+      "productPrice": 25000,
+      "productImageUrl": "https://m.media-amazon.com/images/I/81qpdeKzdmS._AC_SL1500_.jpg",
+      "quantity": 1
+    }
+  ],
+  "orders": [
+    {
+      "id": "3f64",
+      "fullName": "AYHAN ÖZER",
+      "userId": "12",
+      "phoneNumber": "05544667146",
+      "city": "istanbul",
+      "district": "merkez",
+      "fullAdress": "Akçakoca cad. Ladin sok. No:11 Fazilet apt. Kat:3 D:13 Bahçeköy-Sarıyer/İstanbul",
+      "cartNumber": "1234567891011",
+      "cartOwnerName": "AYHAN ÖZER",
+      "expiresDate": "04/27",
+      "cvv": "456",
+      "installmentOptions": "3",
+      "status": "Onay Bekliyor",
+      "baskets": [
+        {
+          "id": "2509",
+          "userId": "12",
+          "productId": "f3e7",
+          "productName": "Televizyon",
+          "productPrice": 25000,
+          "productImageUrl": "https://m.media-amazon.com/images/I/81qpdeKzdmS._AC_SL1500_.jpg",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "cda6",
+      "fullName": "AYHAN ÖZER",
+      "userId": "12",
+      "phoneNumber": "05544667146",
+      "city": "istanbul",
+      "district": "merkez",
+      "fullAdress": "Akçakoca cad. Ladin sok. No:11 Fazilet apt. Kat:3 D:13 Bahçeköy-Sarıyer/İstanbul",
+      "cartNumber": "1234567891011",
+      "cartOwnerName": "AYHAN ÖZER",
+      "expiresDate": "04/27",
+      "cvv": "456",
+      "installmentOptions": "3",
+      "status": "Onay Bekliyor",
+      "baskets": [
+        {
+          "id": "2509",
+          "userId": "12",
+          "productId": "f3e7",
+          "productName": "Televizyon",
+          "productPrice": 25000,
+          "productImageUrl": "https://m.media-amazon.com/images/I/81qpdeKzdmS._AC_SL1500_.jpg",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "3053",
+      "orderNumber": "TS-2025-1752065760921",
+      "date": "2025-07-09T12:56:00.921Z",
+      "fullName": "AYHAN ÖZER",
+      "userId": "12",
+      "phoneNumber": "05544667146",
+      "city": "istanbul",
+      "district": "merkez",
+      "fullAdress": "Akçakoca cad. Ladin sok. No:11 Fazilet apt. Kat:3 D:13 Bahçeköy-Sarıyer/İstanbul",
+      "cartNumber": "6666666666666666",
+      "cartOwnerName": "AYHAN ÖZER",
+      "expiresDate": "04/27",
+      "cvv": "456",
+      "installmentOptions": "9 Taksit",
+      "status": "Hazırlanıyor.",
+      "baskets": [
+        {
+          "id": "2509",
+          "userId": "12",
+          "productId": "f3e7",
+          "productName": "Televizyon",
+          "productPrice": 25000,
+          "productImageUrl": "https://m.media-amazon.com/images/I/81qpdeKzdmS._AC_SL1500_.jpg",
+          "quantity": 1
+        }
+      ]
+    }
   ]
 }

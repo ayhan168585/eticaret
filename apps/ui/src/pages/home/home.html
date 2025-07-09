@@ -35,7 +35,7 @@
 
         @if (user()) {
           
-          <button class="add-to-cart">Sepete Ekle</button>
+          <button (click)="addBasket(val)" class="add-to-cart">Sepete Ekle</button>
         } @else {
           
           <button routerLink="/auth/login"  class="add-to-cart">Giriş yapmalısınız</button>
