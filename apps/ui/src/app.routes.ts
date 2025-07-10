@@ -30,6 +30,11 @@ export const appRoutes: Route[] = [
       {
         path: 'auth',
         loadChildren: () => import('./pages/auth/routes'),
+      },
+      {
+        path:'orders',
+        loadComponent:()=>import('./pages/orders/orders'),
+        canActivate:[authGuard]
       }
     ],
   },

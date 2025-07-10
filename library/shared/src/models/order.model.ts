@@ -33,7 +33,7 @@ export const initialOrder:OrderModel={
     expiresDate:"",
     cvv:0,
     installmentOptions:"",
-    status:"Hazırlanıyor.",
+    status:"Hazırlanıyor",
     baskets:[]
 
 }
